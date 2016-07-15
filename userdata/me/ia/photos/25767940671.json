@@ -1,0 +1,103 @@
+{
+  "id": "25767940671",
+  "secret": "c1b58cf9de",
+  "server": "1580",
+  "farm": 2,
+  "dateuploaded": "1458236460",
+  "isfavorite": 0,
+  "license": "0",
+  "safety_level": "0",
+  "rotation": 0,
+  "originalsecret": "f413d1eb96",
+  "originalformat": "jpg",
+  "owner": {
+    "nsid": "139226105@N06",
+    "username": "paulcuichan",
+    "realname": "paul Cuichan",
+    "location": "",
+    "iconserver": "0",
+    "iconfarm": 0,
+    "path_alias": null
+  },
+  "title": {
+    "_content": "chamuel4.jpg"
+  },
+  "description": {
+    "_content": ""
+  },
+  "visibility": {
+    "ispublic": 1,
+    "isfriend": 0,
+    "isfamily": 0
+  },
+  "dates": {
+    "posted": "1458236460",
+    "taken": "2016-03-17 10:41:00",
+    "takengranularity": 0,
+    "takenunknown": "1",
+    "lastupdate": "1458236462"
+  },
+  "views": "0",
+  "editability": {
+    "cancomment": 0,
+    "canaddmeta": 0
+  },
+  "publiceditability": {
+    "cancomment": 1,
+    "canaddmeta": 0
+  },
+  "usage": {
+    "candownload": 1,
+    "canblog": 0,
+    "canprint": 0,
+    "canshare": 1
+  },
+  "comments": {
+    "_content": "0"
+  },
+  "notes": {
+    "note": []
+  },
+  "people": {
+    "haspeople": 0
+  },
+  "tags": {
+    "tag": [
+      {
+        "id": "139180783-25767940671-607",
+        "author": "139226105@N06",
+        "authorname": "paulcuichan",
+        "raw": "art",
+        "_content": "art",
+        "machine_tag": 0
+      },
+      {
+        "id": "139180783-25767940671-1",
+        "author": "139226105@N06",
+        "authorname": "paulcuichan",
+        "raw": "test 1",
+        "_content": "test1",
+        "machine_tag": 0
+      }
+    ]
+  },
+  "urls": {
+    "url": [
+      {
+        "type": "photopage",
+        "_content": "https://www.flickr.com/photos/139226105@N06/25767940671/"
+      }
+    ]
+  },
+  "media": "photo",
+  "sizes": [
+    "s",
+    "q",
+    "t",
+    "m",
+    "z",
+    "c",
+    "b",
+    "o"
+  ]
+}

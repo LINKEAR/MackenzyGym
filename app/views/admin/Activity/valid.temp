@@ -1,0 +1,141 @@
+<div ng-controller="activityCtrl as activityController">
+    <div ng-include="'views/common/top_form.html'"></div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>{{ 'FORM' | translate }}</h5>
+                        <div ibox-tools></div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form role="form" name="activityForm">
+                                    <div class='form-group' hidden>
+                                        <label>Id</label>
+                                        <input type='text' ng-model='activity._id'>
+                                    </div>
+
+                                    <div class='form-group' ng-class="{ 'has-error':!activityForm.$pristine && activityForm.name.$invalid}">
+                                        <label>Nombre</label>
+                                        <input name='name' type='number' ng-model='activity.name'  placeholder='Ingresa un nombre' class='form-control' ng-pattern='/^[0-9]+(\.[0-9]{2}?)$/' required>
+                                        <div>
+                                            <uib-alert ng-show='(!activityForm.$pristine && activityForm.name.$error.pattern!=null)' type="danger">Name no tiene el formato adecuado ejemplo 200.20</uib-alert>
+                                           <uib-alert ng-show='!activityForm.$pristine && activityForm.name.$error.number' type="danger">Name is numero</uib-alert> 
+                                       
+                                           <uib-alert ng-show='!activityForm.$pristine && activityForm.name.$error.required' type="danger">Name is required</uib-alert>
+                                            <uib-alert ng-show='activityController.showAlertsName' ng-repeat="alert in activityController.alertsName" type="{{alert.type}}">{{alert.msg}}</uib-alert>
+                                        </div>
+                                    </div>
+
+                                    <div class='form-group' placeholder='Enter email' ng-class="{ 'has-error':!activityForm.$pristine && activityForm.state.$invalid}">
+                                        <label>Estado</label>
+                                        <select name='state' required ng-model='activity.state' class='form-control selectpicker'>
+                                            <option>Activo</option>
+                                            <option>No Activo</option>
+                                        </select>
+                                        <div>
+                                         <uib-alert ng-show='!activityForm.$pristine && activityForm.state.$error.required' type="danger">State is required</uib-alert>
+                                        <uib-alert ng-show='activityController.showAlertsState' ng-repeat="alert in activityController.alertsState" type="{{alert.type}}">{{alert.msg}}</uib-alert>
+                                        </div>
+                                        <div class="form-group"></div>
+                                        <div class="form-group">
+
+                                            <button type="submit" ng-show="showBtnNewAC" class="btn btn-primary dim" type="submit" ng-click="save()" data-ng-disabled='!activityForm.$valid'> <i class="fa fa-save"></i> {{ 'SAVE' | translate }}
+                                            </button>
+
+
+                                            <button type="submit" ng-show="showBtnModAC" class="btn btn-primary dim" type="submit" ng-click="update()" data-ng-disabled='!activityForm.$valid'>
+                                                <i class="fa fa-refresh"></i> {{ 'UPDATE' | translate }}
+                                            </button>
+
+
+
+                                        </div>
+                                </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    //////////////////////////////////////////////////////////////////////////////////////77////
+    //////////////////////////////////////////////////////////////////////////////////////77////
+    //////////////////////////////////////////////////////////////////////////////////////77////
+    //////////////////////////////////////////////////////////////////////////////////////77////
+    <div ng-controller="activityCtrl as activitycontroller">
+    <div ng-include="'views/common/top_form.html'"></div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>{{ 'FORM' | translate }}</h5>
+                        <div ibox-tools></div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form role="form" name="activityForm">
+                                    <div class='form-group' hidden>
+                                        <label>Id</label>
+                                        <input type='text' ng-model='activity._id'>
+                                    </div>
+
+                                    <div class='form-group' ng-class="{ 'has-error':!activityForm.$pristine && activityForm.name.$invalid}">
+                                        <label>Nombre</label>
+                                        <input name='name' type='text' ng-model='activity.name'  placeholder='Ingresa un nombre' class='form-control' ng-click="hideAlerts()">
+                                        <div>
+                                           <uib-alert ng-show='!activityForm.$pristine && activityForm.name.$error.required' type="danger">Name is required</uib-alert>
+                                            
+                                            <uib-alert ng-show='true' ng-repeat="alert in activitycontroller.alerts.name" type="{{alert.type}}" close="activitycontroller.closeAlert($index,'name')">{{alert.msg}}</uib-alert>
+
+                                           
+                                        </div>
+                                    </div>
+                                    <input name='app' type='text' ng-model='activity.app'  placeholder='Ingresa un nombre' class='form-control' >
+ <uib-alert ng-show='true' ng-repeat="alert in activitycontroller.alerts.app" type="{{alert.type}}"  close="activitycontroller.closeAlert($index,'app')">{{alert.msg}}</uib-alert>
+
+
+                                    <div class='form-group' placeholder='Enter email' ng-class="{ 'has-error':!activityForm.$pristine && activityForm.state.$invalid}">
+                                        <label>Estado</label>
+                                        <select name='app' required ng-model='activity.state' ng-click="hideAlerts()" class='form-control selectpicker'>
+                                            <option>Activo</option>
+                                            <option>No Activo</option>
+                                        </select>
+                                        <div>
+                                         <uib-alert ng-show='!activityForm.$pristine && activityForm.state.$error.required' type="danger">State is required</uib-alert>
+                                        <uib-alert ng-show='activitycontroller.showAlertsState' ng-repeat="alert in activitycontroller.alerts" type="danger" close="closeAlert($index)" close="activitycontroller.closeAlert($index,'state')">{{alert.msg}}</uib-alert>
+                                        </div>
+                                        <div class="form-group"></div>
+                                        <div class="form-group">
+
+                                            <button type="submit" ng-show="showBtnNewAC" class="btn btn-primary dim" type="submit" ng-click="save()" data-ng-disabled='!activityForm.$valid'> <i class="fa fa-save"></i> {{ 'SAVE' | translate }}
+                                            </button>
+
+
+                                            <button type="submit" ng-show="showBtnModAC" class="btn btn-primary dim" type="submit" ng-click="update()" data-ng-disabled='!activityForm.$valid'>
+                                                <i class="fa fa-refresh"></i> {{ 'UPDATE' | translate }}
+                                            </button>
+
+
+
+                                        </div>
+                                </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>

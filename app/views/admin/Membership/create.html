@@ -1,0 +1,216 @@
+<div ng-controller="membershipCtrl as membershipcontroller">
+    <div ng-include="'views/common/top_form.html'"></div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+      <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Formulario</h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <form name ="membershipUploadForm" novalidate>
+                              <div class='form-group'>
+                                <label> {{'membership_image'  | translate}}</label>
+                                  <div class="row">
+                                     <div class='col-sm-9'>
+                                                      <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-picture-o"></i></span>
+                                                            <input type="text" value="{{uploadFile.name}}"
+                                                            class="form-control" disabled >
+                                                       </div>
+                                                       <br>
+                                                       <file-field class="btn"
+                                                                 ng-model="uploadFile"
+                                                                 ng-class="{'btn-success':uploadFile.name}"
+                                                                 preview="previewImage"
+                                                                 valid-types="{{'.jpg,.jpeg'}}"
+                                                                  error-file="errorFile">
+                                                                <i class="fa fa-folder-open-o" ng-disabled="!new"></i>
+                                                       </file-field>
+                                                        <button class="btn btn-primary" ng-click="inix()" ><!--ng-click="doUpload()">-->
+                                                          <i class="fa fa-cloud-upload"></i>
+                                                        </button>
+                                      </div>
+                                      <div class="col-sm-3"
+                                          file-dropzone=".jpg,.jpeg"
+                                          file="previewImage"
+                                          ng-model="uploadFile"
+                                          data-max-file-size="3"
+                                          error-file="errorFile"
+                                          >
+                                                <div class="lightBoxGallery" style="width:85px;height:90px;">
+
+                                                    <a href="{{previewImage || previewImageOp}}"  title="Preview" data-gallery=""  class="thumbnail">
+                                                          <img style="display: block; margin: 0 auto; width:85px;height:90px; " ng-src="{{previewImage || previewImageOp}}" alt="MDN">
+                                                    </a>
+
+
+                                                     <div id="blueimp-gallery" class="blueimp-gallery">
+                                                         <div class="slides"></div>
+                                                         <h3 class="title"></h3>
+                                                         <a class="prev">‹</a>
+                                                         <a class="next">›</a>
+                                                         <a class="close">×</a>
+                                                         <a class="play-pause"></a>
+                                                         <ol class="indicator"></ol>
+                                                     </div>
+                                                 </div>
+                                        </div>
+                                    </div>
+                                    <!--&&&&&&&&&&&&&&&&&& Validaciones &&&&&&&&&&&&&&&&&& -->
+                                     <div name="message-state">
+                                       <!--Validacion angular-->
+                                         <uib-alert ng-show='!errorFile'
+                                                    type="danger">Solo se aceptan imagenes</uib-alert>
+
+
+
+                                   </div>
+                                   <!--&&&&&&&&&&&&&&&&&& Fin Validaciones &&&&&&&&&&&&&&&&&& -->
+                              </div>
+                            </form>
+                            <!--##################                      ############# -->
+                            <!--################## FORMULARIO DE DATOS- ############# -->
+                            <!--##################                      ############# -->
+                              <form name ="membershipForm" novalidate>
+                                <!--################## Inicio de campo- ############# -->
+                                    <div class='form-group'>
+
+                                            <input name='image'
+                                                   type='text'
+                                                   class='form-control'
+                                                   ng-model='membership.image'
+                                                   ng-show="false"
+                                                   required>
+
+                                        <!--&&&&&&&&&&&&&&&&&& Validaciones &&&&&&&&&&&&&&&&&& -->
+                                        <div name="message-name">
+                                          <!--Validacion angular-->
+                                           <uib-alert ng-show='!membershipForm.$pristine
+                                                                && membershipForm.image.$error.required'
+                                                      type="danger">No se ha seleccionado ni verificado la fotografia</uib-alert>
+                                            <!--Validacion back-->
+                                           <uib-alert ng-show='true'
+                                                      ng-repeat="alert in membershipcontroller.alerts.image"
+                                                      type="{{alert.type}}"
+                                                      close="membershipcontroller.closeAlert($index,'image')">
+                                                          {{alert.msg}}
+                                            </uib-alert>
+                                        </div>
+                                        <!--&&&&&&&&&&&&&&&&&& Fin Validaciones &&&&&&&&&&&&&&&&&& -->
+                                    </div>
+                                    <!--################## Fin de campo- ############# -->
+                                <!--################## Inicio de campo- ############# -->
+                                    <div class='form-group'
+                                         ng-class="{ 'has-error':!membershipForm.$pristine
+                                                      && membershipForm.name.$invalid}">
+
+                                        <label>{{'membership_name'  | translate}}</label>
+                                        <div class="input-group" >
+                                           <span class="input-group-addon"><i class="fa fa-quote-left"></i></span>
+                                            <input name='name' ng-disabled="new"
+                                                   type='text'
+                                                   class='form-control'
+                                                   ng-model='membership.name'
+                                                   ng-click="hideAlerts()"
+                                                   placeholder="{{ 'membership_place_name' | translate }}"
+                                                   required>
+
+                                        </div>
+                                        <!--&&&&&&&&&&&&&&&&&& Validaciones &&&&&&&&&&&&&&&&&& -->
+                                        <div name="message-name">
+                                          <!--Validacion angular-->
+                                           <uib-alert ng-show='!membershipForm.$pristine
+                                                                && membershipForm.name.$error.required'
+                                                      type="danger">Name is required</uib-alert>
+                                            <!--Validacion back-->
+                                           <uib-alert ng-show='true'
+                                                      ng-repeat="alert in membershipcontroller.alerts.name"
+                                                      type="{{alert.type}}"
+                                                      close="membershipcontroller.closeAlert($index,'name')">
+                                                          {{alert.msg}}
+                                            </uib-alert>
+                                        </div>
+                                        <!--&&&&&&&&&&&&&&&&&& Fin Validaciones &&&&&&&&&&&&&&&&&& -->
+                                    </div>
+                                    <!--################## Fin de campo- ############# -->
+
+
+
+                                  <!--################## Inicio de campo- ############# -->
+                                  <div class='form-group'
+                                        ng-class="{ 'has-error':!membershipForm.$pristine && membershipForm.state.$invalid}">
+                                      <label>{{'membership_state'  | translate}}</label>
+                                            <ui-select name='state' ng-model="membership.state" ng-disabled="new" required>
+                                              <ui-select-match placeholder="{{'membership_place_state'  | translate }}">{{$select.selected}}</ui-select-match>
+                                              <ui-select-choices repeat="estado in estados | filter: $select.search">
+                                                <div ng-bind="estado"></div>
+                                              </ui-select-choices>
+                                            </ui-select>
+
+                                       <!--&&&&&&&&&&&&&&&&&& Validaciones &&&&&&&&&&&&&&&&&& -->
+                                        <div name="message-state">
+                                          <!--Validacion angular-->
+                                            <uib-alert ng-show='!membershipForm.$pristine
+                                                                 && membershipForm.state.$error.required'
+                                                       type="danger">State is required</uib-alert>
+                                        <!--Validacion back-->
+                                          <uib-alert ng-show='membershipcontroller.showAlertsState'
+                                                      ng-repeat="alert in membershipcontroller.alerts.state"
+                                                      type="danger"
+                                                      close="membershipcontroller.closeAlert($index,'state')">
+                                                      {{alert.msg}}
+                                            </uib-alert>
+                                      </div>
+                                      <!--&&&&&&&&&&&&&&&&&& Fin Validaciones &&&&&&&&&&&&&&&&&& -->
+                                    </div>
+                                    <!--################## Fin de campo ################## -->
+                                    <!--%%%%%%%%%%%%%%%%%% Inicio Botones %%%%%%%%%%%%%%%%%%-->
+                                    <div class="form-group"></div>
+                                    <div class="form-group">
+                                        <button type="submit"
+                                                ng-show="showBtnNewAC"
+                                                class="btn btn-primary dim"
+                                                ng-click="save()"
+                                                data-ng-disabled='!membershipForm.$valid'>
+                                                    <i class="fa fa-save"></i>
+                                                    {{ 'SAVE' | translate }}
+                                          </button>
+                                          <button type="submit"
+                                                  ng-show="showBtnModAC"
+                                                  class="btn btn-primary dim"
+                                                  ng-click="update()"
+                                                  data-ng-disabled='!membershipForm.$valid'>
+                                                      <i class="fa fa-refresh"></i>
+                                                      {{ 'UPDATE' | translate }}
+                                          </button>
+                                    </div>
+                                    <!--%%%%%%%%%%%%%%%%%% Fin de campo %%%%%%%%%%%%%%%%%%-->
+                              </form>
+
+                              </div>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+<style>
+    /* Local style for demo purpose */
+
+    .lightBoxGallery {
+        text-align: center;
+    }
+
+    .lightBoxGallery img {
+        margin: 5px;
+    }
+
+</style>

@@ -1,0 +1,21 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/home/desarrollador/Documents/MackenzyGym/app/bower_components/angular/angular.js",
+        "/home/desarrollador/Documents/MackenzyGym/app/bower_components/angular-resource/angular-resource.min.js",
+        "/home/desarrollador/Documents/MackenzyGym/app/bower_components/jquery/src/manipulation.js",
+        "/home/desarrollador/Documents/MackenzyGym/app/bower_components/jquery/src/exports.js",
+        "/home/desarrollador/Documents/MackenzyGym/app/bower_components/jquery/src/support.js",
+        "/home/desarrollador/Documents/MackenzyGym/app/bower_components/jquery/src/deprecated.js",
+        "/home/desarrollador/Documents/MackenzyGym/app/bower_components/jquery/src/queue.js",
+        "/home/desarrollador/Documents/MackenzyGym/app/bower_components/jquery/src/core.js",
+        "/home/desarrollador/Documents/MackenzyGym/app/bower_components/jquery/src/data.js",
+        "/home/desarrollador/Documents/MackenzyGym/app/bower_components/jquery/src/callbacks.js",
+        "/home/desarrollador/Documents/MackenzyGym/app/bower_components/jquery/src/intro.js",
+        "/home/desarrollador/Documents/MackenzyGym/app/bower_components/jquery/src/outro.js",
+        "/home/desarrollador/Documents/MackenzyGym/app/bower_components/jquery/src/dimensions.js",
+        "/home/desarrollador/Documents/MackenzyGym/app/bower_components/jquery/src/selector-native.js",
+        "/home/desarrollador/Documents/MackenzyGym/app/bower_components/jquery/src/deferred.js",
+        "/home/desarrollador/Documents/MackenzyGym/controller/Actividad/actividad.main.server.controller.js",
+        "/home/desarrollador/Documents/MackenzyGym/app/bower_components/jquery/src/css.js"
+    ]
+}

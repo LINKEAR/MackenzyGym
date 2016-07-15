@@ -1,0 +1,41 @@
+
+'use strict';
+angular.module('MackenzyGymApp').controller('mainCtrl', ['$scope', '$http',function ($scope,$http)
+  {
+  var loadData=function(){
+      $http.get('/membresias').then(function(response){
+        console.log("Respuesta:::>");
+        console.log(response);
+        $scope.listaMembresia=response.data;
+      });
+    }
+
+    $scope.registrarMembresia=function(membresia){
+        console.log(membresia)
+        $http.post('/membresia',membresia).then(function(res){
+            $scope.findMode=true;
+
+            console.log(membresia);
+            txtNombreMembresia.value="";
+            loadData();
+        });
+     };
+
+
+    $scope.seleccionarMembresia=function(membresia){
+        console.log("Seleccionando::>>");
+
+        $http.get('/buscarMembresiaById/'+membresia._id).then(function(res){
+             console.log(res);
+            $scope.membresia=res.data[0];
+        });
+     };
+     $scope.EliminarMembresia=function(membresia){
+
+       $http.post('/eliminarMembresia',{'id':membresia._id}).then(function(res){
+         console.log(res);
+         loadData();
+       });
+     }
+     loadData();
+  }]);

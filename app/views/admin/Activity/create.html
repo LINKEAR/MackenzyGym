@@ -1,0 +1,144 @@
+<div ng-controller="activityCtrl as activitycontroller">
+
+
+    <div ng-include="'views/common/top_form.html'"></div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>{{ 'FORM' | translate }}</h5>
+                        <div ibox-tools></div>
+                    </div>
+                    <div class="ibox-content">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form role="form" name="activityForm">
+                                    <div class='form-group' hidden>
+                                        <label>Id</label>
+                                        <input type='text' ng-model='activity._id'>
+                                    </div>
+                                   <!--################## Inicio de campo- ############# -->
+                                    <div class='form-group'
+                                         ng-class="{ 'has-error':!activityForm.$pristine
+                                                      && activityForm.name.$invalid}">
+                                        <label>{{'activity_name'  | translate}}</label>
+                                        <input name='nXame'
+                                               type='text'
+                                               class='form-control'
+                                               ng-model='activity.name'
+                                               ng-click="hideAlerts()"
+                                               placeholder="{{ 'activity_place_name' | translate }}"
+                                               required>
+                                        <!--&&&&&&&&&&&&&&&&&& Validaciones &&&&&&&&&&&&&&&&&& -->
+                                        <div name="message-name">
+                                          <!--Validacion angular-->
+                                           <uib-alert ng-show='!activityForm.$pristine
+                                                                && activityForm.name.$error.required'
+                                                      type="danger">Name is required</uib-alert>
+                                            <!--Validacion back-->
+                                           <uib-alert ng-show='true'
+                                                      ng-repeat="alert in activitycontroller.alerts.name"
+                                                      type="{{alert.type}}"
+                                                      close="activitycontroller.closeAlert($index,'name')">
+                                                          {{alert.msg}}
+                                            </uib-alert>
+                                        </div>
+                                        <!--&&&&&&&&&&&&&&&&&& Fin Validaciones &&&&&&&&&&&&&&&&&& -->
+                                    </div>
+                                    <!--################## Fin de campo- ############# -->
+                                    <!--################## Inicio de campo- ############# -->
+                                    <div class='form-group'
+                                          ng-class="{ 'has-error':!activityForm.$pristine && activityForm.state.$invalid}">
+                                        <label>{{'activity_state'  | translate}}</label>
+
+                                        <ui-select  name='state' ng-model="activity.state" required>
+                                          <ui-select-match placeholder="{{activity_place_name}}">{{$select.selected}}</ui-select-match>
+                                          <ui-select-choices repeat="estado in estados | filter: $select.search">
+                                            <div ng-bind="estado"></div>
+                                          </ui-select-choices>
+                                        </ui-select>
+                                         <!--&&&&&&&&&&&&&&&&&& Validaciones &&&&&&&&&&&&&&&&&& -->
+                                          <div name="message-state">
+                                            <!--Validacion angular-->
+                                              <uib-alert ng-show='!activityForm.$pristine
+                                                                   && activityForm.state.$error.required'
+                                                         type="danger">State is required</uib-alert>
+                                          <!--Validacion back-->
+                                            <uib-alert ng-show='activitycontroller.showAlertsState'
+                                                        ng-repeat="alert in activitycontroller.alerts.state"
+                                                        type="danger"
+                                                        close="activitycontroller.closeAlert($index,'state')">
+                                                        {{alert.msg}}
+                                              </uib-alert>
+                                        </div>
+                                        <!--&&&&&&&&&&&&&&&&&& Fin Validaciones &&&&&&&&&&&&&&&&&& -->
+                                      </div>
+                                      <!--################## Fin de campo ################## -->
+                                      <!--%%%%%%%%%%%%%%%%%% Inicio Botones %%%%%%%%%%%%%%%%%%-->
+                                      <div class="form-group"></div>
+                                      <div class="form-group">
+                                          <button type="submit"
+                                                  ng-show="showBtnNewAC"
+                                                  class="btn btn-primary dim"
+                                                  ng-click="save()"
+                                                  data-ng-disabled='!activityForm.$valid'>
+                                                      <i class="fa fa-save"></i>
+                                                      {{ 'SAVE' | translate }}
+                                            </button>
+                                            <button type="submit"
+                                                    ng-show="showBtnModAC"
+                                                    class="btn btn-primary dim"
+                                                    ng-click="update()"
+                                                    data-ng-disabled='!activityForm.$valid'>
+                                                        <i class="fa fa-refresh"></i>
+                                                        {{ 'UPDATE' | translate }}
+                                            </button>
+                                            
+                                 </div>
+                                      <!--%%%%%%%%%%%%%%%%%% Fin de campo %%%%%%%%%%%%%%%%%%-->
+                                </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    XXXXXX
+
+
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1835127536708142',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.6&appId=1835127536708142";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+  <!-- Your like button code -->
+<div class="fb-like" data-href="http://www.apasionadosdelmarketing.es/desbloquear-enlaces-web-bloqueados-facebook/" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+ 
+  
+                 

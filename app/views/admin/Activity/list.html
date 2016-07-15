@@ -1,0 +1,48 @@
+<div ng-controller="activityCtrl as activityController">
+    <div ng-include="'views/common/top_form.html'"></div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+<div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{ 'RESULT' | translate }} </h5>
+
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+
+                    <div class="table-responsive">
+
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Nombre</th>
+                                <th>Estado</th>
+                                <th>Editar</th>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="activity in activities">
+                                    <td>
+                                        {{ activity.name || 'empty' }}
+                                    </td>
+                                    <td>
+                                        {{ activity.state || 'empty' }}
+                                    </td>
+                                    <td>
+
+
+                                        <button ng-click="changeStateEdit(activity)" class="btn btn-info  dim" type="submit"><i class="fa fa-paste"></i></button>
+
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+'use strict';
+(function(){
+
+    var app = angular.module('MackenzyGymApp', []);
+    app.config(function ($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: './views/main.html',
+                controller: 'membresiaCtrl'
+            })
+            .when('/AdmMembresia.html', {
+                templateUrl: './views/membresia.html',
+                controller: 'mainCtrl'
+            })
+            .when('/membresia.html', {
+                templateUrl: './views/Membresia/membresia.html',
+                controller: 'membresiaCtrl'
+            })
+            .when('/consultarMembresia.html', {
+                templateUrl: './views/Membresia/consultarMembresia.html',
+                controller: 'membresiaCtrl'
+            })
+            .when('/consultarActividad.html', {
+                templateUrl: './views/Actividad/consultarActividad.html',
+                controller: 'actividadCtrl'
+            })
+            .when('/actividad.html', {
+                templateUrl: './views/Actividad/actividad.html',
+                controller: 'actividadCtrl'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+    });
+
+}.call(this));

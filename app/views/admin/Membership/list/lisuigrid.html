@@ -1,0 +1,188 @@
+             <div ng-controller="ngTestCtrl" class="container">
+      <style>
+        .new-row-remove {
+          -webkit-transition: {{ animationTime }}s {{ easing }} all;
+          -moz-transition: {{ animationTime }}s {{ easing }} all;
+          -o-transition: {{ animationTime }}s {{ easing }} all;
+          transition: {{ animationTime }}s {{ easing }} all;
+          {{ animation.start }};
+        }
+
+        .new-row-remove-active {
+          {{ animation.end }};
+        }
+
+        .new-row {
+          {{ animation.start }};
+        }
+
+        .delete-row {
+          {{ animation.start }};
+        }
+
+        .delete-row-add {
+          -webkit-transition: {{ animationTime }}s {{ easing }} all;
+          -moz-transition: {{ animationTime }}s {{ easing }} all;
+          -o-transition: {{ animationTime }}s {{ easing }} all;
+          transition: {{ animationTime }}s {{ easing }} all;
+          {{ animation.end }};
+        }
+
+        .delete-row-add-active {
+          {{ animation.start }};
+        }
+      </style>
+
+      <div class="row">
+        <div class="col-xs-3">
+          <select class="form-control" ng-model="animation" ng-options="value as key for (key, value) in animations"></select>
+        </div>
+        <div class="col-xs-3">
+          <div class="input-group">
+            <input type="number" step="0.25" class="form-control" ng-model="animationTime" ng-init="animationTime = 1">
+            <span class="input-group-addon">sec</span>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <select class="form-control" ng-model="easing" ng-init="easing = 'linear'">
+            <option value="linear">linear</option>
+            <option value="ease">ease</option>
+            <option value="ease-in">ease-in</option>
+            <option value="ease-out">ease-out</option>
+            <option value="ease-in-out">ease-in-out</option>
+            <option value="cubic-bezier(0.175, 0.885, 0.32, 1.275)">ease-out-back</option>
+            <option value="cubic-bezier(0.785, 0.135, 0.15, 0.86)">ease-in-out-circ</option>
+          </select>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-xs-2">
+          <input type="number" class="form-control" ng-model="rows" ng-init="rows = 3">
+        </div>
+        <button type="button" class="btn btn-primary" ng-click="addRows(rows)">Add Rows</button>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="grid1" ui-grid="gridOptions" class="grid"></div>
+        </div>
+      </div>
+    </div>
+<script type="text/javascript">
+
+  function ngTest($scope, $http, Animations) {
+    $scope.addRows = addRows;
+    $scope.deleteRow = deleteRow;
+    $scope.animation = Animations.opacity;
+    $scope.animations = Animations;
+
+    $scope.gridOptions = {
+      rowHeight: 90,
+      columnDefs: [
+        { field: 'user.picture.thumbnail', cellTemplate: 'views/admin/templatetable/thumbnail.html', displayName: '', width: 90 },
+        { field: 'user.name.first', displayName: 'First Name', cellFilter: 'ucasefirst' },
+        { field: 'user.name.last', displayName: 'Last Name', cellFilter: 'ucasefirst' },
+        { field: 'user.dob', displayName: 'DOB' , type: 'date', cellFilter: 'epochSeconds | date' },
+        { field: 'user.username',  cellTemplate: 'views/admin/templatetable/delete-row.html', displayName: '', width: 58 }
+      ],
+      onRegisterApi: function (gridApi) {
+        gridApi.grid.registerRowBuilder(function (row, gridOptions) {
+          row.isNew = true;
+        });
+      }
+    };
+
+    init();
+
+    ////////////
+
+    function init () {
+      $http.get('http://api.randomuser.me/?results=100')
+        .success(function (res) {
+          $scope.gridOptions.data = res.results;
+        });
+    }
+
+    function addRows(num) {
+      $http.get('http://api.randomuser.me/?results=' + num)
+        .success(function (res) {
+          $scope.gridOptions.data = res.results.concat($scope.gridOptions.data);
+        });
+    }
+
+    function deleteRow(entity) {
+      $scope.gridOptions.data.splice($scope.gridOptions.data.indexOf(entity), 1);
+    }
+  }
+
+  //buevas directivas
+
+  function ucasefirst() {
+    return function (input) {
+      if(input!=null)   return input.substring(0, 1).toUpperCase() + input.substring(1);
+      else return '';
+    };
+  }
+
+  function epochSeconds() {
+    return function (input) {
+      var d = new Date(0);
+      d.setUTCSeconds(input);
+      return d;
+    };
+  }
+
+   function uiGridRow ($animate, $timeout, uiGridConstants) {
+    return {
+      priority: -1,
+      link: function ($scope, $elm, $attrs) {
+        $scope.$watch('row.entity', function (n, o) {
+          if ($scope.row.isNew) {
+            $elm.addClass('new-row');
+
+            $timeout(function () {
+              $animate.removeClass($elm, 'new-row');
+            });
+
+            $scope.row.isNew = false;
+          }
+        });
+
+        $scope.$on('delete-row', function (evt, row) {
+          $animate.addClass($elm, 'delete-row')
+            .then(function () {
+              $elm.removeClass('delete-row');
+
+              // Not in $digest
+              $timeout(function () {
+                var data = $scope.grid.options.data;
+                data.splice(data.indexOf(row.entity), 1);
+              });
+            });
+        });
+      }
+    }
+  }
+
+  function uiGridCell () {
+    return {
+      priority: -1,
+      link: function ($scope, $elm, $attrs) {
+        $scope.deleteRow = deleteRow;
+
+        function deleteRow(row) {
+          $scope.$emit('delete-row', row);
+        }
+      }
+    }
+  }
+
+  angular
+      .module('MackenzyGymApp')
+      .controller('ngTestCtrlx',ngTest)
+      .filter('ucasefirst',ucasefirst)
+      .filter('epochSeconds',epochSeconds)
+      .directive('uiGridRow',uiGridRow)
+      .directive('uiGridCell',uiGridCell);
+</script>

@@ -1,0 +1,103 @@
+{
+  "id": "25239313023",
+  "secret": "8e2ea0cfba",
+  "server": "1583",
+  "farm": 2,
+  "dateuploaded": "1458245273",
+  "isfavorite": 0,
+  "license": "0",
+  "safety_level": "0",
+  "rotation": 0,
+  "originalsecret": "f176c94c23",
+  "originalformat": "png",
+  "owner": {
+    "nsid": "139226105@N06",
+    "username": "paulcuichan",
+    "realname": "paul Cuichan",
+    "location": "",
+    "iconserver": "0",
+    "iconfarm": 0,
+    "path_alias": null
+  },
+  "title": {
+    "_content": "Captura de pantalla de 2016-03-12 18:32:33.png"
+  },
+  "description": {
+    "_content": ""
+  },
+  "visibility": {
+    "ispublic": 1,
+    "isfriend": 0,
+    "isfamily": 0
+  },
+  "dates": {
+    "posted": "1458245273",
+    "taken": "2016-03-17 13:07:53",
+    "takengranularity": 0,
+    "takenunknown": "1",
+    "lastupdate": "1458245275"
+  },
+  "views": "0",
+  "editability": {
+    "cancomment": 0,
+    "canaddmeta": 0
+  },
+  "publiceditability": {
+    "cancomment": 1,
+    "canaddmeta": 0
+  },
+  "usage": {
+    "candownload": 1,
+    "canblog": 0,
+    "canprint": 0,
+    "canshare": 1
+  },
+  "comments": {
+    "_content": "0"
+  },
+  "notes": {
+    "note": []
+  },
+  "people": {
+    "haspeople": 0
+  },
+  "tags": {
+    "tag": [
+      {
+        "id": "139180783-25239313023-607",
+        "author": "139226105@N06",
+        "authorname": "paulcuichan",
+        "raw": "art",
+        "_content": "art",
+        "machine_tag": 0
+      },
+      {
+        "id": "139180783-25239313023-1",
+        "author": "139226105@N06",
+        "authorname": "paulcuichan",
+        "raw": "test 1",
+        "_content": "test1",
+        "machine_tag": 0
+      }
+    ]
+  },
+  "urls": {
+    "url": [
+      {
+        "type": "photopage",
+        "_content": "https://www.flickr.com/photos/139226105@N06/25239313023/"
+      }
+    ]
+  },
+  "media": "photo",
+  "sizes": [
+    "s",
+    "q",
+    "t",
+    "m",
+    "z",
+    "c",
+    "b",
+    "o"
+  ]
+}

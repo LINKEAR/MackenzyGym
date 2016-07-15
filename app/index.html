@@ -1,0 +1,147 @@
+<!--
+* INSPINIA - Responsive Admin Theme
+* Version 2.3
+*
+-->
+
+<!doctype html>
+<html ng-app="MackenzyGymApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+
+    <!-- Page title set in pageTitle directive -->
+    <title page-title></title>
+
+
+    <!-- Bootstrap -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font awesome -->
+    <link href="assets/stylesheets/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Main Inspinia CSS files -->
+
+    <link href="assets/stylesheets/animate.css" rel="stylesheet">
+    <link id="loadBefore" href="assets/stylesheets/style.css" rel="stylesheet">
+    <!--Otros css-->
+  <!--  <link rel="stylesheet" href="bower_components/bootstrap-select/dist/css/bootstrap-select.min.css">-->
+
+     <link rel="stylesheet" href="bower_components/angular-notify/dist/angular-notify.min.css">
+     <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.min.css">
+     <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css">
+     <link rel="stylesheet" href="bower_components/ui-select/dist/select.min.css">
+     <link rel="stylesheet" type="text/css" href="/bower_components/angular-ui-grid/ui-grid.css" />
+    <!--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/angular.ngtable/1.0.0-beta.9/ng-table.min.css">-->
+
+
+         <!--
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link href="bower_components/bootstrap-fileinput/css/fileinput.css" rel="stylesheet">
+     <script src="assets/javascripts/plugins/canvas-to-blob/js/canvas-to-blob.js"></script>
+    <script src="bower_components/bootstrap-fileinput/js/fileinput_locale_es.js"></script>
+    -->
+
+</head>
+
+<!-- ControllerAs syntax -->
+<!-- Main controller with serveral data used in Inspinia theme on diferent view -->
+
+<body ng-controller="MainCtrl as main">
+
+    <!-- Main view  -->
+    <div ui-view></div>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>-->
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.11.0/lodash.js"></script>--
+
+    <!-- jQuery and Bootstrap -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="assets/javascripts/plugins/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- MetsiMenu -->
+    <script src="assets/javascripts/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- SlimScroll -->
+    <script src="assets/javascripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Peace JS -->
+    <script src="assets/javascripts/plugins/pace/pace.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="assets/javascripts/inspinia.js"></script>
+
+
+    <!-- Main Angular scripts-->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/ng-idle/angular-idle.min.js"></script>
+
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/angular-notify/dist/angular-notify.min.js"></script>
+     <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-ui-mask/dist/mask.min.js"></script>
+    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+    <script src="bower_components/ui-select/dist/select.min.js"></script>
+    <script src="bower_components/angular-fileupload/angular-filereader.min.js"></script>
+    <script src="assets/javascripts/myjs/uigrid.js"></script>
+
+
+<!--    <script src="https://cdn.jsdelivr.net/angular.ngtable/1.0.0-beta.9/ng-table.js"></script>-->
+
+
+
+
+
+    <!--
+     You need to include this script on any page that has a Google Map.
+     When using Google Maps on your own site you MUST signup for your own API key at:
+     https://developers.google.com/maps/documentation/javascript/tutorial#api_key
+     After your sign up replace the key in the URL below..
+    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQTpXj82d8UpCi97wzo_nKXL7nYrd4G70"></script>
+
+    <!--Field input-->
+    <script src="bower_components/angular-bootstrap-file-field/src/angular-bootstrap-file-field.js"></script>
+    <!-- Anglar App Script -->
+
+    <script src="scripts/app.js"></script>
+
+    <!-- ccc SS-->
+
+    <script src="scripts/config/config.js"></script>
+    <script src="scripts/directives/directives.js"></script>
+    <script src="scripts/controllers/util.js"></script>
+    <script src="scripts/controllers/translations.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/admController/ActividadCtrl.js"></script>
+     <script src="scripts/controllers/admController/SearchCtrl.js"></script>
+
+     <script src="scripts/controllers/admController/ScheduleCtrl.js"></script>
+    <script src="scripts/controllers/admController/MembershipCtrl.js"></script>
+
+
+    <<script src="scripts/controllers/admController/ngTest.js"></script>!--OTROS-->
+
+    <!--<script src="bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>-->
+    <!--<script src="bower_components/bootstrap-select/dist/js/i18n/defaults-*.min.js"></script>-->
+
+    <!--rESTANTES
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+
+   -->
+
+</body>
+
+</html>

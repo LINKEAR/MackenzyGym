@@ -1,0 +1,44 @@
+<div ng-controller="membershipCtrl as membershipController">
+    <div ng-include="'views/common/top_form.html'"></div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{ 'RESULT' | translate }} </h5>
+
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+
+                    <div class="table-responsive">
+
+                        <table class="table table-striped">
+                            <thead>
+                                <th>{{'membership_name' | translate }}</th>
+                                <th>{{'membership_state' | translate }}</th>
+                                <th>{{'OPTIONS' | translate }}</th>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="membership in memberships">
+                                    <td>
+                                        {{ membership.name || 'empty' }}
+                                    </td>
+                                    <td>
+                                        {{ membership.state || 'empty' }}
+                                    </td>
+                                    <td>
+                                      <button ng-click="changeStateEdit(membership)" class="btn btn-info  dim" type="submit"><i class="fa fa-paste"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

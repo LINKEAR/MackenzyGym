@@ -1,0 +1,118 @@
+<div ng-controller="activityCtrl as activitycontroller">
+    <div ng-include="'views/common/top_form.html'"></div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>{{ 'FORM' | translate }}</h5>
+                        <div ibox-tools></div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form role="form" name="activityForm">
+                                    <div class='form-group' hidden>
+                                        <label>Id</label>
+                                        <input type='text' ng-model='activity._id'>
+                                    </div>
+                                   <!--################## Inicio de campo- ############# -->
+                                    <div class='form-group'
+                                         ng-class="{ 'has-error':!activityForm.$pristine
+                                                      && activityForm.name.$invalid}">
+                                        <label>{{'activity_name'  | translate}}</label>
+                                        <input name='nXame'
+                                               type='text'
+                                               class='form-control'
+                                               ng-model='activity.name'
+                                               ng-click="hideAlerts()"
+                                               placeholder="{{ 'activity_place_name' | translate }}"
+                                               required>
+                                        <!--&&&&&&&&&&&&&&&&&& Validaciones &&&&&&&&&&&&&&&&&& -->
+                                        <div name="message-name">
+                                          <!--Validacion angular-->
+                                           <uib-alert ng-show='!activityForm.$pristine
+                                                                && activityForm.name.$error.required'
+                                                      type="danger">Name is required</uib-alert>
+                                            <!--Validacion back-->
+                                           <uib-alert ng-show='true'
+                                                      ng-repeat="alert in activitycontroller.alerts.name"
+                                                      type="{{alert.type}}"
+                                                      close="activitycontroller.closeAlert($index,'name')">
+                                                          {{alert.msg}}
+                                            </uib-alert>
+                                        </div>
+                                        <!--&&&&&&&&&&&&&&&&&& Fin Validaciones &&&&&&&&&&&&&&&&&& -->
+                                    </div>
+                                    <!--################## Fin de campo- ############# -->
+                                    <!--################## Inicio de campo- ############# -->
+                                    <div class='form-group'
+                                          ng-class="{ 'has-error':!activityForm.$pristine && activityForm.state.$invalid}">
+                                        <label>{{'activity_state'  | translate}}</label>
+                                        <select name='state'
+                                                class="form-control selectpicker"
+                                                ng-model='activity.state'
+                                                ng-click="hideAlerts()"
+                                                data-live-search="true"
+                                                >
+                                            <option>Activo</option>
+                                            <option>No Activo</option>
+                                        </select>
+
+                                        
+                                        <!--&&&&&&&&&&&&&&&&&& Validaciones &&&&&&&&&&&&&&&&&& -->
+                                        <div name="message-state">
+                                          <!--Validacion angular-->
+                                            <uib-alert ng-show='!activityForm.$pristine
+                                                                 && activityForm.state.$error.required'
+                                                       type="danger">State is required</uib-alert>
+                                          <!--Validacion back-->
+                                            <uib-alert ng-show='activitycontroller.showAlertsState'
+                                                        ng-repeat="alert in activitycontroller.alerts"
+                                                        type="danger"
+                                                        close="activitycontroller.closeAlert($index,'state')">
+                                                        {{alert.msg}}
+                                              </uib-alert>
+                                        </div>
+                                        <!--&&&&&&&&&&&&&&&&&& Fin Validaciones &&&&&&&&&&&&&&&&&& -->
+                                      </div>
+                                      <!--################## Fin de campo ################## -->
+                                      <!--%%%%%%%%%%%%%%%%%% Inicio Botones %%%%%%%%%%%%%%%%%%-->
+                                      <div class="form-group"></div>
+                                      <div class="form-group">
+                                          <button type="submit"
+                                                  ng-show="showBtnNewAC"
+                                                  class="btn btn-primary dim"
+                                                  ng-click="save()"
+                                                  data-ng-disabled='!activityForm.$valid'>
+                                                      <i class="fa fa-save"></i>
+                                                      {{ 'SAVE' | translate }}
+                                            </button>
+                                            <button type="submit"
+                                                    ng-show="showBtnModAC"
+                                                    class="btn btn-primary dim"
+                                                    ng-click="update()"
+                                                    data-ng-disabled='!activityForm.$valid'>
+                                                        <i class="fa fa-refresh"></i>
+                                                        {{ 'UPDATE' | translate }}
+                                            </button>
+                                      </div>
+                                      <!--%%%%%%%%%%%%%%%%%% Fin de campo %%%%%%%%%%%%%%%%%%-->
+                                </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+<script>
+    $('.selectpicker').selectpicker({
+
+      size: 4
+    });
+</script>

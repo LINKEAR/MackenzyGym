@@ -1,0 +1,102 @@
+{
+  "id": "25562451150",
+  "secret": "94b2596c94",
+  "server": "1511",
+  "farm": 2,
+  "dateuploaded": "1458236815",
+  "isfavorite": 0,
+  "license": "0",
+  "safety_level": "0",
+  "rotation": 0,
+  "originalsecret": "592d646dfb",
+  "originalformat": "jpg",
+  "owner": {
+    "nsid": "139226105@N06",
+    "username": "paulcuichan",
+    "realname": "paul Cuichan",
+    "location": "",
+    "iconserver": "0",
+    "iconfarm": 0,
+    "path_alias": null
+  },
+  "title": {
+    "_content": "21303-6-feliz-dia-para-un-gran-ingeniero.jpg"
+  },
+  "description": {
+    "_content": ""
+  },
+  "visibility": {
+    "ispublic": 1,
+    "isfriend": 0,
+    "isfamily": 0
+  },
+  "dates": {
+    "posted": "1458236815",
+    "taken": "2016-03-17 10:46:55",
+    "takengranularity": 0,
+    "takenunknown": "1",
+    "lastupdate": "1458236817"
+  },
+  "views": "0",
+  "editability": {
+    "cancomment": 0,
+    "canaddmeta": 0
+  },
+  "publiceditability": {
+    "cancomment": 1,
+    "canaddmeta": 0
+  },
+  "usage": {
+    "candownload": 1,
+    "canblog": 0,
+    "canprint": 0,
+    "canshare": 1
+  },
+  "comments": {
+    "_content": "0"
+  },
+  "notes": {
+    "note": []
+  },
+  "people": {
+    "haspeople": 0
+  },
+  "tags": {
+    "tag": [
+      {
+        "id": "139180783-25562451150-607",
+        "author": "139226105@N06",
+        "authorname": "paulcuichan",
+        "raw": "art",
+        "_content": "art",
+        "machine_tag": 0
+      },
+      {
+        "id": "139180783-25562451150-1",
+        "author": "139226105@N06",
+        "authorname": "paulcuichan",
+        "raw": "test 1",
+        "_content": "test1",
+        "machine_tag": 0
+      }
+    ]
+  },
+  "urls": {
+    "url": [
+      {
+        "type": "photopage",
+        "_content": "https://www.flickr.com/photos/139226105@N06/25562451150/"
+      }
+    ]
+  },
+  "media": "photo",
+  "sizes": [
+    "s",
+    "q",
+    "t",
+    "m",
+    "z",
+    "b",
+    "o"
+  ]
+}
